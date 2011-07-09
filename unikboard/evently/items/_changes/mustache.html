@@ -1,0 +1,21 @@
+<h3>Derniers grains</h3>
+<ul>
+  {{#items}}
+    <li title="{{created_at}}">
+      <div class="avatar">
+        <div class="name">
+          &lt;{{nickname}}&gt;
+        </div>
+        {{#gravatar_url}}<img src="{{gravatar_url}}" alt="{{name}}"/>{{/gravatar_url}}
+      </div>
+      <p>
+        {{_id}}
+        <br />
+        {{content}}
+      </p>
+      <div style="clear:left;"></div>
+    </li>
+  {{/items}}
+</ul>
+
+<p>Pagination à ajouter...</p>
