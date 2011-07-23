@@ -89,3 +89,6 @@ div.avatar img {
 
 #items ul {
   list-style: none; }
+
+#publish input[type='submit'] {
+  display: none; }

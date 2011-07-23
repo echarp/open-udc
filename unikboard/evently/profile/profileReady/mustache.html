@@ -7,14 +7,17 @@
   {{#gravatar_url}}<img src="{{gravatar_url}}"/>{{/gravatar_url}}
 </div>
 
-<form id="publish">
-  <label>ID
-    <input type="text" name="_id" size=20 value="">
-  </label>
-  <label>Contenu
-    <textarea name="content" rows="3" cols="40" />
-  </label>
+<form id="publish" enctype="multipart/form-data" method="POST">
+  <input type="file" id="_attachments" name="_attachments" />
+  <input type="hidden" id="_rev" name="_rev" />
   <input type="submit" value="OK" />
 </form>
 
 <div style="clear:left;"></div>
+
+<script type="text/javascript" charset="utf-8">
+  $("#_attachments").change(function() {
+    $(":submit").show();
+    $("#publish").submit();
+  });
+</script>

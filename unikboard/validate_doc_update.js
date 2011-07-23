@@ -6,14 +6,11 @@ function(newDoc, oldDoc, userCtx) {
   };
 
   require("_id");
-  require("content");
+  //require("content");
 
-  if (oldDoc && oldDoc._rev) {
-    throw({forbidden : 'This bill is already present in the board'});
+  /*
+  if (oldDoc && (oldDoc._rev && !oldDoc._attachments)) {
+    throw({forbidden : 'You can not modify this grain'});
   }
-
-  if (newDoc.created_at == null) {
-    // We add a timestamp to each bill
-    newDoc.created_at = new Date();
-  }
+  */
 }

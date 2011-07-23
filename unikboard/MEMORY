@@ -4,6 +4,9 @@ curl -X POST http://unikboard:5984/unikboard/ -H "Content-Type: application/json
 curl -X PUT http://unikboard:5984/unikboard/test -d '{"title":"ho"}'
 curl -X PUT http://unikboard:5984/unikboard/test -d '{"title":"ho", "_rev":"xxx"}'
 
+curl -X PUT -H "Content-Type: application/pgp-encrypted" -T ../extras/firstbill.gpg http://localhost:5984/unikboard/firstbill/
+→ {"ok":true,"id":"firstbill","rev":"1-7d62b1dfafab012eba115afda4561ef1"}
+
 
 curl -X PUT -H "Content-Type: text/xml" \
 			 -T doc/os-UBL-2.0/xml/UBL-Order-2.0-Example.xml \
