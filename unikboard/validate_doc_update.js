@@ -1,12 +1,31 @@
 // This method is called as a validation before any document upload
 function(newDoc, oldDoc, userCtx) {
-  function require(field, message) {
+  if (newDoc && newDoc._attachments) {
+    //var gpg = require(__dirname + '/../lib/gpg');
+    //var gpg = require('/home/manu/.node_libraries/gpg/index.js');
+    //var gpg = require('vendor/gpg/index.js');
+    //var gpg = require('vendor/gpg/lib/gpg.js');
+    // code vendor/gpg/lib/gpg.js
+
+    /*
+    gpg.decryptFile('../extras/firstbill.gpg', function(err, contents) {
+      log(contents);
+    });
+    */
+  }
+
+  function required(field, message /* optional */) {
     message = message || "Document must have a " + field;
     if (!newDoc[field]) throw({forbidden : message});
-  };
+  }
 
-  require("_id");
-  //require("content");
+  function unchanged(field) {
+    if (oldDoc && toJSON(oldDoc[field]) != toJSON(newDoc[field]))
+      throw({forbidden : "Field can't be changed: " + field});
+  }
+
+  required("_id");
+  //required("content");
 
   /*
   if (oldDoc && (oldDoc._rev && !oldDoc._attachments)) {

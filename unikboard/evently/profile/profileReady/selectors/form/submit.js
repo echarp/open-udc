@@ -10,18 +10,13 @@ function(e) {
 
   var docToSave = { '_id' : name.replace(ext, '') };
 
-  $$(this).app.db.saveDoc(docToSave, {
-    success : function(resp) {
-      $("#_rev").val(resp.rev);
-
-      $("#publish").ajaxSubmit({
-        url: "/unikboard/"+resp.id,
-        resetForm: true,
-        success: function(data, statusText) {
-          alert('File uploaded');
-          $(":submit").hide();
-        }
-      });
+  $("#publish").ajaxSubmit({
+    //url: "/unikboard/"+resp.id,
+    url: "/_node",
+    resetForm: true,
+    success: function(data, statusText) {
+      alert('File uploaded');
+      $(":submit").hide();
     }
   });
 };
